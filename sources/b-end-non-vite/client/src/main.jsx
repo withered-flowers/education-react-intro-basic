@@ -1,18 +1,17 @@
-// TODO - Langkah 3b: Hapus seluruh import yang tidak digunakan
-// TODO - Langkah 8: Import function yang dibutuhkan untuk mengakses data reaktif (state) pada React
-import { useState } from "react";
+// Start React di sini
+// TODO - Langkah 5.1: Import React dan ReactDOM dari CDN esm.sh
+import ReactDOMClient from "https://esm.sh/react-dom@19/client/?dev";
+import React from "https://esm.sh/react@19/?dev";
 
-// TODO - Langkah 2b: Hapus file src/App.css dan uncomment import pada src/App.jsx
-// import './App.css'
-
-function App() {
-	// TODO - Langkah 9: Membuat "data" reaktif (state) untuk kondisi login dan username
+// TODO - Langkah 6: Membuat Component React
+const AplikasiReactKu = () => {
+	// TODO - Langkah 11: Membuat "data" reaktif (state) untuk kondisi login dan username
 	// Di sini kita akan menggunakan "data" yang bisa digunakan secara "reaktif"
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [username, setUsername] = useState("");
+	const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+	const [username, setUsername] = React.useState("");
 
-	// TODO - Langkah 17: Membuat data dummy untuk Todo (ambil dari server/db.json)
-	const [todos, setTodos] = useState([
+	// TODO - Langkah 18: Membuat data dummy untuk Todo (ambil dari server/db.json)
+	const [todos, setTodos] = React.useState([
 		{
 			id: 1,
 			name: "Belajar React",
@@ -40,14 +39,14 @@ function App() {
 		},
 	]);
 
-	// TODO - Langkah 19: Membuat "data" reaktif (state) untuk data AddTodo
-	const [formAddTodo, setFormAddTodo] = useState({
+	// TODO - Langkah 20: Membuat "data" reaktif (state) untuk data AddTodo
+	const [formAddTodo, setFormAddTodo] = React.useState({
 		name: "",
 		description: "",
 		priority: "",
 	});
 
-	// TODO - Langkah 12: Membuat fungsi untuk membaca perubahan input
+	// TODO - Langkah 14: Membuat fungsi untuk membaca perubahan input
 	const fnOnChangeBacaPerubahanInput = (event) => {
 		// Kita akan membaca data yang diterima oleh input
 		const inputValue = event.target.value;
@@ -56,7 +55,7 @@ function App() {
 		setUsername(inputValue);
 	};
 
-	// TODO - Langkah 14: Membuat fungsi untuk memasukkan identitas pengguna
+	// TODO - Langkah 16: Membuat fungsi untuk memasukkan identitas pengguna
 	const fnOnClickMemasukkanIdentitas = (event) => {
 		// Di sini kita akan menggunakan suatu hal untuk menghentikan aksi default dari suatu event
 		event.preventDefault();
@@ -65,7 +64,7 @@ function App() {
 		setIsLoggedIn(true);
 	};
 
-	// TODO - Langkah 20: Membuat fungsi untuk menghandle input Form Todo
+	// TODO - Langkah 21: Membuat fungsi untuk menghandle input Form Todo
 	const fnOnChangeFormAddTodoSemuanya = (event) => {
 		// Kita akan membaca data yang diterima oleh input
 		const inputValue = event.target.value;
@@ -75,8 +74,6 @@ function App() {
 		// sedangkan datanya adalah "name", "description", "priority"
 		const inputName = event.target.name;
 		const columnName = inputName.split("-")[1];
-
-		console.log(inputName, columnName);
 
 		// Kita akan mengubah "data" reaktif (state) formAddTodo
 		// Jangan lupa untuk menggunakan [] karena takutnya ada mengandung spasi atau karakter spesial
@@ -89,7 +86,7 @@ function App() {
 		);
 	};
 
-	// TODO - Langkah 22: Membuat fungsi untuk menghandle Form Add Todo
+	// TODO - Langkah 23: Membuat fungsi untuk menghandle Form Add Todo
 	const fnOnSubmitFormAddTodo = (event) => {
 		// Yang pasti harus tidak boleh refresh
 		event.preventDefault();
@@ -104,7 +101,7 @@ function App() {
 		]);
 	};
 
-	// TODO - Langkah 24: Membuat fungsi untuk kembali ke halaman utama
+	// TODO - Langkah 25: Membuat fungsi untuk kembali ke halaman utama
 	const fnOnClickKembaliKeHalamanUtama = (event) => {
 		event.preventDefault();
 
@@ -112,20 +109,14 @@ function App() {
 		setIsLoggedIn(false);
 	};
 
-	// TODO - Langkah 3a: Hapus seluruh code yang ada di dalam function App
-	// TODO - Langkah 4: Copy isi dari body yang ada di template (index.html) ke sini
+	// Pada fungsi ini, kita akan mengembalikan sebuah "element React" (JSX)
 	return (
-		// Ini dinamakan dengan "Fragment"
-		// Bagian dari Tag HTML yang tidak memiliki nama
-
-		// (Tidak akan di-render ke DOM, hanya sebagai pembungkus)
 		<>
-			{/* Di sini lah kita akan memasukkan isi dari body HTML yang dibuat sebelumnya */}
-			{/* Minus si Script-nya yah ! */}
+			{/* TODO - Langkah 8: Ganti cara untuk melakukan comment (dari HTML ke JSX) */}
+			{/* TODO - Langkah 9: Ganti cara untuk menggunakan class (class -> className) */}
+			{/* TODO - Langkah 10: Ganti cara untuk menggunakan select selected (selected dibuang, diganti jadi defaultValue) */}
 
-			{/* TODO - Langkah 5: Ganti cara untuk melakukan comment (dari HTML ke JSX) */}
-			{/* TODO - Langkah 6: Ganti cara untuk menggunakan class (class -> className) */}
-			{/* TODO - Langkah 7: Ganti cara untuk menggunakan select selected (selected dibuang, diganti jadi defaultValue) */}
+			{/* Section 1 */}
 			<section className="relative w-full px-8 text-gray-700 bg-white body-font">
 				<div className="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
 					<a
@@ -135,25 +126,26 @@ function App() {
 						ToDo ReactJS v1
 					</a>
 
-					{/* TODO - Langkah 11a: Membuat Tampilan yang akan muncul berdasarkan kondisi tertentu (conditional rendering) */}
+					{/* TODO - Langkah 13a: Membuat Tampilan yang akan muncul berdasarkan kondisi tertentu (conditional rendering) */}
 					{isLoggedIn && (
-						<div className="relative z-10 inline-flex items-center space-x-3 md:ml-5 lg:justify-end">
-							{/* TODO: Langkah 25 - Mengimplementasikan Kembali ke halaman utama */}
-							<button
-								type="button"
-								href="#"
-								className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none"
-								onClick={fnOnClickKembaliKeHalamanUtama}
-							>
-								{/* TODO - Langkah 10: Tampilkan isi state username di sini */}
-								Hello, {username}
-							</button>
-						</div>
+						<>
+							<div className="relative z-10 inline-flex items-center space-x-3 md:ml-5 lg:justify-end">
+								{/* TODO: Langkah 26 - Mengimplementasikan Kembali ke halaman utama */}
+								<a
+									href="#"
+									className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none"
+									onClick={fnOnClickKembaliKeHalamanUtama}
+								>
+									{/* TODO - Langkah 12: Gunakan state username di sini */}
+									Hello, {username}
+								</a>
+							</div>
+						</>
 					)}
 				</div>
 			</section>
 
-			{/* TODO - Langkah 16: Jangan lupa untuk membuat conditional rendering ketika user sudah logged in */}
+			{/* TODO - Langkah 17: Jangan lupa untuk membuat conditional rendering ketika user sudah logged in */}
 			{!isLoggedIn && (
 				<>
 					{/* Section 2 */}
@@ -161,13 +153,13 @@ function App() {
 						<div className="max-w-5xl mx-auto">
 							<div className="flex flex-col items-center md:flex-row">
 								{/* <div className="w-full space-y-5 md:w-3/5 md:pr-16">
-          <p className="font-medium text-blue-500 uppercase">Building Businesses</p>
-          <h2 className="text-2xl font-extrabold leading-none text-black sm:text-3xl md:text-5xl">
-            Changing The Way People Do Business.
-          </h2>
-          <p className="text-xl text-gray-600 md:pr-16">Learn how to engage with your visitors and teach them about your
-            mission. We're revolutionizing the way customers and businesses interact.</p>
-        </div> */}
+      <p className="font-medium text-blue-500 uppercase">Building Businesses</p>
+      <h2 className="text-2xl font-extrabold leading-none text-black sm:text-3xl md:text-5xl">
+        Changing The Way People Do Business.
+      </h2>
+      <p className="text-xl text-gray-600 md:pr-16">Learn how to engage with your visitors and teach them about your
+        mission. We're revolutionizing the way customers and businesses interact.</p>
+    </div> */}
 
 								<div className="w-full mt-16 md:mt-0 md:w-5/5">
 									<div className="relative z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7">
@@ -179,7 +171,7 @@ function App() {
 										<h3 className="mb-6 text-2xl font-medium text-center">
 											Identity
 										</h3>
-										{/* TODO - Langkah 13: Memodifikasi input untuk bisa menerima dan mengganti state username */}
+										{/* TODO - Langkah 15: Memodifikasi input untuk bisa menerima dan mengganti state username */}
 										<input
 											type="text"
 											name="user-name"
@@ -189,17 +181,15 @@ function App() {
 											onChange={fnOnChangeBacaPerubahanInput}
 										/>
 										<div className="block">
-											{/* TODO - Langkah 15: Menambahkan event onClick pada button untuk bisa berpindah halaman */}
 											<button
-												type="button"
 												className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
 												onClick={fnOnClickMemasukkanIdentitas}
 											>
-												Let&apos;s Go
+												Let's Go
 											</button>
 										</div>
 										{/* <p className="w-full mt-4 text-sm text-center text-gray-500">Don't have an account? <a href="#_"
-                className="text-blue-500 underline">Sign up here</a></p> */}
+            className="text-blue-500 underline">Sign up here</a></p> */}
 									</div>
 								</div>
 							</div>
@@ -208,7 +198,7 @@ function App() {
 				</>
 			)}
 
-			{/* TODO - Langkah 11b: Membuat Tampilan yang akan muncul berdasarkan kondisi tertentu (conditional rendering) */}
+			{/* TODO - Langkah 13b: Membuat Tampilan yang akan muncul berdasarkan kondisi tertentu (conditional rendering) */}
 			{isLoggedIn && (
 				<>
 					{/* Section 3 */}
@@ -216,15 +206,15 @@ function App() {
 						<div className="max-w-5xl mx-auto">
 							<div className="flex flex-col items-center md:flex-row">
 								{/* <div className="w-full space-y-5 md:w-3/5 md:pr-16">
-          <p className="font-medium text-blue-500 uppercase">Building Businesses</p>
-          <h2 className="text-2xl font-extrabold leading-none text-black sm:text-3xl md:text-5xl">
-            Changing The Way People Do Business.
-          </h2>
-          <p className="text-xl text-gray-600 md:pr-16">Learn how to engage with your visitors and teach them about your
-            mission. We're revolutionizing the way customers and businesses interact.</p>
-        </div> */}
+      <p className="font-medium text-blue-500 uppercase">Building Businesses</p>
+      <h2 className="text-2xl font-extrabold leading-none text-black sm:text-3xl md:text-5xl">
+        Changing The Way People Do Business.
+      </h2>
+      <p className="text-xl text-gray-600 md:pr-16">Learn how to engage with your visitors and teach them about your
+        mission. We're revolutionizing the way customers and businesses interact.</p>
+    </div> */}
 
-								{/* TODO - Langkah 23: Menambahkan event onSubmit pada form */}
+								{/* TODO - Langkah 24: Menambahkan event onSubmit pada form */}
 								<form
 									className="w-full mt-16 md:mt-0 md:w-5/5"
 									onSubmit={fnOnSubmitFormAddTodo}
@@ -233,7 +223,7 @@ function App() {
 										<h3 className="mb-6 text-2xl font-medium text-center">
 											Add ToDo
 										</h3>
-										{/* TODO - Langkah 21: set value dan onChange untuk seluruh input Form Add Todo */}
+										{/* TODO - Langkah 22: set value dan onChange untuk seluruh input Form Add Todo */}
 										<input
 											type="text"
 											name="todo-name"
@@ -251,8 +241,8 @@ function App() {
 											onChange={fnOnChangeFormAddTodoSemuanya}
 										/>
 										{/* <input type="text" name="todo-priority"
-              className="block w-full px-4 py-3 mb-4 border border-2 border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-              placeholder="ToDo Priority"> */}
+          className="block w-full px-4 py-3 mb-4 border border-2 border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+          placeholder="ToDo Priority"> */}
 
 										<select
 											name="todo-priority"
@@ -261,22 +251,19 @@ function App() {
 											value={formAddTodo.priority}
 											onChange={fnOnChangeFormAddTodoSemuanya}
 										>
-											<option disabled hidden />
+											<option disabled hidden></option>
 											<option value="Low">Low</option>
 											<option value="Critical">Critical</option>
 											<option value="Highest">Highest</option>
 										</select>
 
 										<div className="block">
-											<button
-												type="submit"
-												className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
-											>
+											<button className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
 												Add
 											</button>
 										</div>
 										{/* <p className="w-full mt-4 text-sm text-center text-gray-500">Don't have an account? <a href="#_"
-                className="text-blue-500 underline">Sign up here</a></p> */}
+            className="text-blue-500 underline">Sign up here</a></p> */}
 									</div>
 								</form>
 							</div>
@@ -295,7 +282,7 @@ function App() {
 
 							{/* List of ToDo Here */}
 
-							{/* TODO - Langkah 18: Membuat looping element (Rendering List) */}
+							{/* TODO - Langkah 19: Membuat looping element (Rendering List) */}
 							{/* ToDo 1 */}
 							{todos.map((todo) => (
 								// Jangan lupa untuk element yang di-looping harus memiliki "key" yang unik
@@ -323,10 +310,7 @@ function App() {
             className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg">Edit</button>
         </div> */}
 											<div>
-												<button
-													type="button"
-													className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
-												>
+												<button className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
 													Delete
 												</button>
 											</div>
@@ -360,6 +344,9 @@ function App() {
 			</section>
 		</>
 	);
-}
+};
 
-export default App;
+// TODO - Langkah 7: Suntik React DOM
+const container = document.getElementById("root");
+const root = ReactDOMClient.createRoot(container);
+root.render(<AplikasiReactKu />);
