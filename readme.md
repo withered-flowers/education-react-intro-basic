@@ -49,8 +49,12 @@ Demo ini menggunakan Vite dengan template React sebagai permulaannya
 1. Pilih `Javascript`
 1. `cd <nama_folder>`
 1. `npm install`
+1. Tambah tailwind dengan `npm install tailwindcss @tailwindcss/vite`
+1. Modifikasi file `vite.config.js` untuk menambahkan tailwindcss
+1. Modifikasi file `index.css` untuk menambahkan tailwindcss
 1. `npm run dev`
 1. Modifikasi kode dengan langkah sebagai berikut:
+   1. Hapus import script tailwind yang ada di template `index.html`
    1. Ganti Title dan Tambahkan script untuk CSS yang dibutuhkan (`index.html`)
    1. Hapus file src/index.css dan uncomment import pada `src/main.jsx`
    1. Hapus file src/App.css dan uncomment import pada `src/App.jsx`

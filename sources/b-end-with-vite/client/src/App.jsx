@@ -76,6 +76,8 @@ function App() {
 		const inputName = event.target.name;
 		const columnName = inputName.split("-")[1];
 
+		console.log(inputName, columnName);
+
 		// Kita akan mengubah "data" reaktif (state) formAddTodo
 		// Jangan lupa untuk menggunakan [] karena takutnya ada mengandung spasi atau karakter spesial
 		setFormAddTodo(
@@ -135,19 +137,18 @@ function App() {
 
 					{/* TODO - Langkah 11a: Membuat Tampilan yang akan muncul berdasarkan kondisi tertentu (conditional rendering) */}
 					{isLoggedIn && (
-						<>
-							<div className="relative z-10 inline-flex items-center space-x-3 md:ml-5 lg:justify-end">
-								{/* TODO: Langkah 25 - Mengimplementasikan Kembali ke halaman utama */}
-								<a
-									href="#"
-									className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none"
-									onClick={fnOnClickKembaliKeHalamanUtama}
-								>
-									{/* TODO - Langkah 10: Tampilkan isi state username di sini */}
-									Hello, {username}
-								</a>
-							</div>
-						</>
+						<div className="relative z-10 inline-flex items-center space-x-3 md:ml-5 lg:justify-end">
+							{/* TODO: Langkah 25 - Mengimplementasikan Kembali ke halaman utama */}
+							<button
+								type="button"
+								href="#"
+								className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none"
+								onClick={fnOnClickKembaliKeHalamanUtama}
+							>
+								{/* TODO - Langkah 10: Tampilkan isi state username di sini */}
+								Hello, {username}
+							</button>
+						</div>
 					)}
 				</div>
 			</section>
@@ -190,6 +191,7 @@ function App() {
 										<div className="block">
 											{/* TODO - Langkah 15: Menambahkan event onClick pada button untuk bisa berpindah halaman */}
 											<button
+												type="button"
 												className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
 												onClick={fnOnClickMemasukkanIdentitas}
 											>
@@ -242,7 +244,7 @@ function App() {
 										/>
 										<input
 											type="text"
-											name="todo-desc"
+											name="todo-description"
 											className="block w-full px-4 py-3 mb-4 border border-2 border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
 											placeholder="ToDo Description"
 											value={formAddTodo.description}
@@ -259,14 +261,17 @@ function App() {
 											value={formAddTodo.priority}
 											onChange={fnOnChangeFormAddTodoSemuanya}
 										>
-											<option disabled hidden></option>
+											<option disabled hidden />
 											<option value="Low">Low</option>
 											<option value="Critical">Critical</option>
 											<option value="Highest">Highest</option>
 										</select>
 
 										<div className="block">
-											<button className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
+											<button
+												type="submit"
+												className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
+											>
 												Add
 											</button>
 										</div>
@@ -318,7 +323,10 @@ function App() {
             className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg">Edit</button>
         </div> */}
 											<div>
-												<button className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
+												<button
+													type="button"
+													className="w-full px-3 py-4 font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
+												>
 													Delete
 												</button>
 											</div>
